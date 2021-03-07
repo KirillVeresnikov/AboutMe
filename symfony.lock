@@ -216,5 +216,8 @@
     },
     "twig/twig": {
         "version": "v3.3.0"
+    },
+    "vkcom/vk-php-sdk": {
+        "version": "5.101.0"
     }
 }
