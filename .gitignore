@@ -8,4 +8,6 @@
 /var/
 /vendor/
 /data/
+/public/images/
 ###< symfony/framework-bundle ###
+*.bat
