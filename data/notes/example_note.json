@@ -1,0 +1,8 @@
+{
+    "date": "01.01.2021",
+    "data":{
+        "caption": "Example",
+        "text":"This is example. You can use html tags.",
+        "photo":"example.jpg"
+    }
+}
