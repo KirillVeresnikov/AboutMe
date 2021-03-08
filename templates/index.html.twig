@@ -1,0 +1,21 @@
+{# templates/index.html.twig #}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Сайт про меня</title>
+</head>
+<body>
+    <div>
+        <h1>{{ first_name }} {{ last_name }}</h1>
+        <h2>{{ status }}</h2>
+        <img src={{ photo }}>
+    </div>
+    {% for note in notes %}
+    <div>
+        <h2>{{ note.data.caption }}</h2>
+        <p>{{ note.data.text }}</p>
+        <img src="images/{{ note.data.photo }}">
+    </div>
+    {% endfor %}
+</body>

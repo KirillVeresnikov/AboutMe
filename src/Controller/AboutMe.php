@@ -12,12 +12,16 @@ class AboutMe extends AbstractController
     {
         $settings = getData();
         $user = getUser($settings['vk']['vkKey'], $settings['vk']['vkId']);
-        
-        return $this->render('index/index.html.twig', array(
+
+        $notesName = getNotesName();
+        $notes = readNotes($notesName);
+
+        return $this->render('index.html.twig', array(
             'first_name' => $user[0]['first_name'],
             'last_name' => $user[0]['last_name'],
             'photo' => $user[0]['photo_max'],
             'status' => $user[0]['status'],
+            'notes' =>$notes
         ));
     }
 
