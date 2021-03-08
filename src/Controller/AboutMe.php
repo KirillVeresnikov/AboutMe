@@ -19,6 +19,7 @@ class AboutMe extends AbstractController
         return $this->render('index.html.twig', array(
             'first_name' => $user[0]['first_name'],
             'last_name' => $user[0]['last_name'],
+            'bdate' => $user[0]['bdate'],
             'photo' => $user[0]['photo_max'],
             'status' => $user[0]['status'],
             'notes' =>$notes

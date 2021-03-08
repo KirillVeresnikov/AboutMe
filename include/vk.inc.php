@@ -6,7 +6,7 @@
         $vk = new VKApiClient();
         $responce = $vk->users()->get($token, array(
             'user_ids' => array($id),
-            'fields'=> array('photo_max', 'status')
+            'fields'=> array('photo_max', 'status', 'bdate')
         ));
         return $responce;
     }
