@@ -1,7 +1,7 @@
 <?php
     function getData()
     {
-        $Path = '../data/setting.json';
+        $Path = '../data/settings.json';
         $result = file_get_contents($Path);
         return json_decode($result, true);
     }
