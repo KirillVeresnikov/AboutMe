@@ -1,3 +1,3 @@
 index:
     path: /
-    controller: App\Controller\AboutMe::index
+    controller: App\Controller\AboutMeController::index
