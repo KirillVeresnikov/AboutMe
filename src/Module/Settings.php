@@ -3,7 +3,7 @@ namespace App\Module;
 
 class Settings implements AppSettings
 {
-    private string $Path = '../data/settings.json';
+    private static string $Path = '../data/settings.json';
     private array $data;
 
     public function __construct()

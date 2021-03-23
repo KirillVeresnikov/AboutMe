@@ -4,7 +4,7 @@ namespace App\Module;
 class Notes implements NotesData
 {
     private array $notesName = [];
-
+    private string $Path = '../data/notes/';
     public function __construct()
     {
         $this -> getNotesName();
@@ -12,7 +12,7 @@ class Notes implements NotesData
 
     private function getNotesName()
     {
-        $dir = scandir('../data/notes/', SCANDIR_SORT_NONE);
+        $dir = scandir($this -> Path, SCANDIR_SORT_NONE);
         foreach ($dir as $value)
         {
             if (strpos($value, '.json'))
@@ -27,11 +27,10 @@ class Notes implements NotesData
         $result = [];
         foreach ($this -> notesName as $value)
         {
-            $file = file_get_contents('../data/notes/'.$value);
+            $file = file_get_contents($this -> Path.$value);
             $note = json_decode($file, true);
             array_push($result, $note);
         }
         return $result;
     }
-
 }
