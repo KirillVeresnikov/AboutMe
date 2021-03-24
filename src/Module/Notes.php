@@ -1,35 +1,36 @@
 <?php
 namespace App\Module;
 
-class Notes implements NotesData
+class Notes implements NotesInterface
 {
-    private array $notesName = [];
-    private string $Path = '../data/notes/';
+    private array $notesName;
+    private string $path = '../data/notes/';
+    
     public function __construct()
     {
-        $this -> getNotesName();
+        $this->getNotesName();
     }
 
     private function getNotesName()
     {
-        $dir = scandir($this -> Path, SCANDIR_SORT_NONE);
+        $dir = scandir($this->path, SCANDIR_SORT_NONE);
         foreach ($dir as $value)
         {
             if (strpos($value, '.json'))
             {
-                array_push($this -> notesName, $value);
+                $this->notesName[] = $value;
             }
         }
     }
 
-    public function readNotes(): array
+    public function getNotes(): array
     {
         $result = [];
-        foreach ($this -> notesName as $value)
+        foreach ($this->notesName as $value)
         {
-            $file = file_get_contents($this -> Path.$value);
+            $file = file_get_contents($this->path.$value);
             $note = json_decode($file, true);
-            array_push($result, $note);
+            $result[] = $note;
         }
         return $result;
     }

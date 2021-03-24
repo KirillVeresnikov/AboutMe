@@ -1,24 +1,19 @@
 <?php
 namespace App\Module;
 
-class Settings implements AppSettings
+class Settings
 {
-    private string $Path = '../data/settings.json';
-    private array $data;
+    private const PATH = '../data/settings.json';
 
-    public function __construct()
+    private static function getData()
     {
-        $this -> getData();
+        $result = file_get_contents(Settings::PATH);
+        return json_decode($result, true);
     }
 
-    private function getData()
+    public static function getValue(string $part, string $key):?string
     {
-        $result = file_get_contents($this -> Path);
-        $this -> data = json_decode($result, true);
-    }
-
-    public function getValue(string $key):?string
-    {
-        return isset($this -> data['vk'][$key]) ? $this -> data['vk'][$key] : null;
+        $data = Settings::getData();
+        return isset($data[$part][$key]) ? $data[$part][$key] : null;
     }
 }

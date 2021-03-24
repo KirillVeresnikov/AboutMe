@@ -3,43 +3,43 @@ namespace App\Module;
 
 class User
 {
-    private string $first_name;
-    private string $last_name;
-    private string $bdate;
+    private string $firstName;
+    private string $lastName;
+    private string $birthDate;
     private string $photo;
     private string $status;
 
-    public function __construct(array $response)
+    public function __construct(string $firstName, string $lastName, string $birthDate, string $photo, string $status)
     {
-        $this -> first_name = $response[0]['first_name'];
-        $this -> last_name = $response[0]['last_name'];
-        $this -> bdate = $response[0]['bdate'];
-        $this -> photo = $response[0]['photo_max'];
-        $this -> status = $response[0]['status'];
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->birthDate = $birthDate;
+        $this->photo = $photo;
+        $this->status = $status;
     }
 
-    public function getFirstName()
+    public function getFirstName(): string
     {
-        return $this -> first_name;
+        return $this->firstName;
     }
 
-    public function getLastName()
+    public function getLastName(): string
     {
-        return $this -> last_name;
+        return $this->lastName;
     }
 
-    public function getBDate()
+    public function getBDate(): string
     {
-        return $this -> bdate;
+        return $this->birthDate;
     }
 
-    public function getPhoto()
+    public function getPhoto(): string
     {
-        return $this -> photo;
+        return $this->photo;
     }
 
-    public function getStatus()
+    public function getStatus(): string
     {
-        return $this -> status;
+        return $this->status;
     }
 }
