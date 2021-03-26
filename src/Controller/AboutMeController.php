@@ -16,7 +16,7 @@ class AboutMeController extends AbstractController
         return $this->render('index.html.twig', [
             'first_name' => $user->getFirstName(),
             'last_name' => $user->getLastName(),
-            'bdate' => $user->getBDate(),
+            'bdate' => $user->getBirthDate(),
             'photo' => $user->getPhoto(),
             'status' => $user->getStatus(),
             'notes' => $notes->getNotes()

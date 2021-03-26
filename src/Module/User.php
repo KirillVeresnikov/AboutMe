@@ -28,7 +28,7 @@ class User
         return $this->lastName;
     }
 
-    public function getBDate(): string
+    public function getBirthDate(): string
     {
         return $this->birthDate;
     }
