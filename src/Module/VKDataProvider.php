@@ -10,7 +10,7 @@ class VKDataProvider implements VKDataProviderInterface
 
     public function __construct()
     {
-        $this->key = Settings::getValue('vk', 'vkKey');
+        $this->key = Settings::getValue('vkKey');
         $this->vk = new VKApiClient();
     }
 

@@ -11,7 +11,7 @@ class AboutMeController extends AbstractController
 {
     public function index(VKDataProviderInterface $vk, NotesInterface $notes)
     {
-        $user = $vk->getUser(Settings::getValue('vk', 'vkId'));
+        $user = $vk->getUser(Settings::getValue('vkId'));
 
         return $this->render('index.html.twig', [
             'first_name' => $user->getFirstName(),
