@@ -1,0 +1,48 @@
+{# templates/hobbie.html.twig #}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Сайт про меня</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>{{ caption }}</h1>
+    </header>
+    <div class="delimiter" />   
+    <article>
+        <div id="block-for-slider">
+            <div id="viewport">
+              <ul id="slidewrapper">
+                {% for photo in photos %}
+                  <li class="slide">
+                    <img src="{{ photo }}" alt="1" class="slide-img">
+                  </li>
+                {% endfor%}
+              </ul>
+      
+              <div id="prev-next-btns">
+                  <div id="prev-btn"></div>
+                  <div id="next-btn"></div>
+              </div>
+      
+              <ul id="nav-btns">
+                <li class="slide-nav-btn"></li>
+                <li class="slide-nav-btn"></li>
+                <li class="slide-nav-btn"></li>
+                <li class="slide-nav-btn"></li>
+              </ul>
+            </div>
+        </div>
+        <div class="content__item">
+            <div class="item__data">
+                <p class="data__text">{{ text }}</p>
+            </div>
+        </div>
+    </article>
+    <script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/runtime.js') }}"></script>
+</body>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Сайт про меня</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 </head>
@@ -17,11 +17,12 @@
         {% for note in notes %}
             <div class="content__item">
                 <div class="item__data">
-                    <h2 class="data__title">{{ note.data.caption }}</h2>
-                    <p class="data__text">{{ note.data.text }}</p>
+                    <h2 class="data__title">{{ note.array.data.caption }}</h2>
+                    <p class="data__text">{{ note.array.data.text }}</p>
+                    <a class="more" href="{{ note.url }}">Читать далее</a>
                 </div>
                 <div class="item__img">
-                    <img src="{{ note.data.photo }}" alt="Картинка">
+                    <img src="{{ note.array.data.photos[0] }}" alt="Картинка">
                 </div>
             </div>
         {% endfor %}

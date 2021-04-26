@@ -17,8 +17,8 @@ class VKDataProvider implements VKDataProviderInterface
     public function getUser(string $id):? User
     {
         $response = $this->vk->users()->get($this->key, [
-            'user_ids' => array($id),
-            'fields'=> array('photo_max', 'status', 'bdate')
+            'user_ids' => [$id],
+            'fields'=> ['photo_max', 'status', 'bdate']
         ]);
         
         $firstName = $response[0]['first_name'];

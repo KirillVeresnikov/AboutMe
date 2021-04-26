@@ -4,13 +4,17 @@ use IvanUskov\ImageSpider\ImageSpider;
 
 class Hobbie
 {
+    private int $id;
     private string $caption;
     private string $text;
+    private array $photos;
 
-    public function __construct(string $caption, string $text)
+    public function __construct(int $id, string $caption, string $text)
     {
+        $this->id = $id;
         $this->caption = $caption;
         $this->text = $text;
+        $this->setPhotos();
     }
 
     public function getCaption(): string
@@ -23,19 +27,29 @@ class Hobbie
         return $this->text;
     }
 
-    public function getPhoto(): string
+    public function setPhotos(): void
     {
         $images = ImageSpider::find($this->caption);
-        return $images[rand(0, count($images) - 1)];
+        shuffle($images);
+        for ($i=0; $i < 4; ++$i) { 
+            $this->photos[] = $images[$i]; 
+        }
+        return;
+    }
+
+    public function getPhotos(): array
+    {
+        return $this->photos;
     }
 
     public function getArray(): array
     {
         $result = [
+            'id' => $this->id,
             'data' => [
                 'caption' => $this->getCaption(),
                 'text' => $this->getText(),
-                'photo' => $this->getPhoto()
+                'photos' => $this->getPhotos()
             ]
         ];
         return $result;
