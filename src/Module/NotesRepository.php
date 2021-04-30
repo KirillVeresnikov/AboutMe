@@ -1,7 +1,7 @@
 <?php
 namespace App\Module;
 
-class Notes implements NotesInterface
+class NotesRepository implements NotesRepositoryInterface
 {
     private array $notesName;
     private string $path = '../data/notes/';

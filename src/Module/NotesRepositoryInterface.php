@@ -1,7 +1,7 @@
 <?php
 namespace App\Module;
 
-interface NotesInterface
+interface NotesRepositoryInterface
 {
     public function getNotes(): array;
 }

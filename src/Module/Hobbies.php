@@ -3,7 +3,7 @@ namespace App\Module;
 
 class Hobbies
 {
-    private array $list;
+    private array $list = [];
     private int $index = 0;
 
     public function addHobbie(string $caption, string $text): void

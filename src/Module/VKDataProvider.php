@@ -1,5 +1,6 @@
 <?php
 namespace App\Module;
+
 use VK\Client\VKApiClient;
 use App\Module\Settings;
 
@@ -14,13 +15,13 @@ class VKDataProvider implements VKDataProviderInterface
         $this->vk = new VKApiClient();
     }
 
-    public function getUser(string $id):? User
+    public function getUser(string $id): ?User
     {
         $response = $this->vk->users()->get($this->key, [
             'user_ids' => [$id],
             'fields'=> ['photo_max', 'status', 'bdate']
         ]);
-        
+
         $firstName = $response[0]['first_name'];
         $lastName = $response[0]['last_name'];
         $birthDate = $response[0]['bdate'];

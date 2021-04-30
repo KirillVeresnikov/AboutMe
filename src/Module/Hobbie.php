@@ -1,13 +1,14 @@
 <?php
 namespace App\Module;
-use IvanUskov\ImageSpider\ImageSpider;
+
+use App\Module\ImageProvider;
 
 class Hobbie
 {
     private int $id;
     private string $caption;
     private string $text;
-    private array $photos;
+    private array $photos = [];
 
     public function __construct(int $id, string $caption, string $text)
     {
@@ -29,11 +30,7 @@ class Hobbie
 
     public function setPhotos(): void
     {
-        $images = ImageSpider::find($this->caption);
-        shuffle($images);
-        for ($i=0; $i < 4; ++$i) { 
-            $this->photos[] = $images[$i]; 
-        }
+        $this->photos = ImageProvider::getPhotos($this->getCaption());
         return;
     }
 

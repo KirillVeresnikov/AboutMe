@@ -2,12 +2,12 @@
 namespace App\View;
 
 use App\Module\VKDataProvider;
-use App\Module\Notes;
+use App\Module\NotesRepository;
 use App\Module\Settings;
 
 class AboutMeView
 {
-    public static function getView(VKDataProvider $vk, Notes $notes)
+    public static function getView(VKDataProvider $vk, NotesRepository $notes)
     {
         $user = $vk->getUser(Settings::getValue('vkId'));
 
