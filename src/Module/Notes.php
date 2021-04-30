@@ -11,7 +11,7 @@ class Notes implements NotesInterface
         $this->getNotesName();
     }
 
-    private function getNotesName()
+    private function getNotesName(): void
     {
         $dir = scandir($this->path, SCANDIR_SORT_NONE);
         foreach ($dir as $value)
