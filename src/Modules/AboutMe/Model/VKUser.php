@@ -1,7 +1,8 @@
 <?php
-namespace App\Module;
 
-class User
+namespace App\Modules\AboutMe\Model;
+
+class VKUser
 {
     private string $firstName;
     private string $lastName;

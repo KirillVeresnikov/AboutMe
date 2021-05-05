@@ -1,5 +1,8 @@
 <?php
-namespace App\Module;
+
+namespace App\Modules\AboutMe\Infrastructure;
+
+use App\Modules\AboutMe\App\NotesRepositoryInterface;
 
 class NotesRepository implements NotesRepositoryInterface
 {

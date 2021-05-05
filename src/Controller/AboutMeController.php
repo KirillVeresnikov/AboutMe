@@ -4,14 +4,14 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\View\AboutMeView;
-use App\Module\VKDataProviderInterface;
-use App\Module\NotesRepositoryInterface;
+use App\Modules\AboutMe\AboutMeService;
 
 class AboutMeController extends AbstractController
 {
-    public function index(VKDataProviderInterface $vk, NotesRepositoryInterface $notes)
+    public function index(): Response
     {
-        $view = AboutMeView::getView($vk, $notes);
+        $service = new AboutMeService();
+        $view = AboutMeView::getView($service);
          
         return $this->render($view['template'], $view['options']);
     }

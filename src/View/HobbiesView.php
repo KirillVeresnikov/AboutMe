@@ -1,20 +1,25 @@
 <?php
 namespace App\View;
 
-use App\Module\Hobbies;
-use App\Module\Hobbie;
-use App\Module\HobbiesFactory;
+use App\Modules\Hobby\HobbyService;
 
 class HobbiesView
 {
-    public static function getView()
+    public static function getView(HobbyService $service): array
     {
-        $hobbies = HobbiesFactory::hobbiesCreate();
-
+        $result = [];
+        foreach ($service->getHobbies() as $hobby) 
+        {
+            $result[] = [
+                'array' => $hobby->getArray(),
+                'url' => '/hobbie/'.$hobby->getArray()['id'],
+            ];
+        }
+        
         return [
             'template' => 'hobbies.html.twig',
             'options' => [
-                'notes' => $hobbies->getHobbies()
+                'notes' => $result,
             ]
         ];
     }

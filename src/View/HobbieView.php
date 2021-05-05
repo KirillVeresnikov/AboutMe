@@ -1,24 +1,24 @@
 <?php
 namespace App\View;
 
-use App\Module\Hobbies;
-use App\Module\Hobbie;
-use App\Module\HobbiesFactory;
+use App\Modules\Hobby\HobbyService;
 
 class HobbieView
 {
-    public static function getView(int $id)
+    public static function getView(HobbyService $service, int $id)
     {
-        $hobbies = HobbiesFactory::hobbiesCreate();    
-        $hobbie = $hobbies->getHobbieById($id);
-
-        return [
-            'template' => 'hobbie.html.twig',
-            'options' => [
-                'caption' => $hobbie->getCaption(),
-                'photos' => $hobbie->getPhotos(),
-                'text' => $hobbie->getText()
-            ]
-        ];
+        $hobby = $service->getHobbyById($id);
+        if ($hobby !== null)
+        {
+            return [
+                'template' => 'hobbie.html.twig',
+                'options' => [
+                    'caption' => $hobby->getTitle(),
+                    'photos' => $hobby->getImages(),
+                    'text' => $hobby->getText()
+                ]
+            ];
+        }
+        
     }
 }

@@ -1,5 +1,6 @@
 <?php
-namespace App\Module;
+
+namespace App\Modules\AboutMe\App;
 
 interface NotesRepositoryInterface
 {

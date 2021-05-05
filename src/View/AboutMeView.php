@@ -1,15 +1,13 @@
 <?php
 namespace App\View;
 
-use App\Module\VKDataProvider;
-use App\Module\NotesRepository;
-use App\Module\Settings;
+use App\Modules\AboutMe\AboutMeService;
 
 class AboutMeView
 {
-    public static function getView(VKDataProvider $vk, NotesRepository $notes)
+    public static function getView(AboutMeService $service)
     {
-        $user = $vk->getUser(Settings::getValue('vkId'));
+        $user = $service->getUser($_ENV['vkId']);
 
         return [
             'template' => 'index.html.twig',
@@ -19,7 +17,7 @@ class AboutMeView
                 'bdate' => $user->getBirthDate(),
                 'photo' => $user->getPhoto(),
                 'status' => $user->getStatus(),
-                'notes' => $notes->getNotes()
+                'notes' => $service->getNotes()
             ]
         ];
     }
