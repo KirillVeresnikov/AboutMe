@@ -5,7 +5,7 @@ use App\Modules\Hobby\HobbyService;
 
 class HobbieView
 {
-    public static function getView(HobbyService $service, int $id)
+    public static function getView(HobbyService $service, int $id): array
     {
         $hobby = $service->getHobbyById($id);
         if ($hobby !== null)
