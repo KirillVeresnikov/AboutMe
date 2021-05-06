@@ -5,7 +5,7 @@ use App\Modules\AboutMe\AboutMeService;
 
 class AboutMeView
 {
-    public static function getView(AboutMeService $service)
+    public static function getView(AboutMeService $service): array
     {
         $user = $service->getUser($_ENV['vkId']);
         if($user === null)
