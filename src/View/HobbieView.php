@@ -19,6 +19,12 @@ class HobbieView
                 ]
             ];
         }
-        
+        else
+        {
+            return [
+                'template' => '404.html.twig',
+                'options' => [],
+            ];
+        }
     }
 }
