@@ -8,7 +8,14 @@ class AboutMeView
     public static function getView(AboutMeService $service)
     {
         $user = $service->getUser($_ENV['vkId']);
-
+        if($user === null)
+        {
+            return [
+                'template' => '404.html.twig',
+                'options' => [],
+            ];
+        }
+        
         return [
             'template' => 'index.html.twig',
             'options' => [
@@ -17,7 +24,7 @@ class AboutMeView
                 'bdate' => $user->getBirthDate(),
                 'photo' => $user->getPhoto(),
                 'status' => $user->getStatus(),
-                'notes' => $service->getNotes()
+                'notes' => $service->getNotes(),
             ]
         ];
     }
