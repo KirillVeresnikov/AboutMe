@@ -15,7 +15,7 @@ class HobbieView
                 'options' => [
                     'caption' => $hobby->getTitle(),
                     'photos' => $hobby->getImages(),
-                    'text' => $hobby->getText()
+                    'text' => $hobby->getText(),
                 ]
             ];
         }
