@@ -20,9 +20,7 @@ class ImageProvider implements ImageProviderInterface
 
             return $result;
         }
-        else
-        {
-            throw new Exception('Not enough images.', 1);
-        }
+        
+        return null;
     }
 }
