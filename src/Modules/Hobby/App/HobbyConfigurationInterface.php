@@ -2,7 +2,7 @@
 
 namespace App\Modules\Hobby\App;
 
-interface HobbyRepositoryInterface
+interface HobbyConfigurationInterface
 {
     public function getHobbyMap(): array;
 }

@@ -1,0 +1,57 @@
+.slider
+{
+    margin: 0 auto;
+    max-width: 500px;
+    display: flex;
+}
+
+.slider__elements
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider-item img
+{
+    width: 500px;
+    height: 400px;
+    object-fit: cover;
+}
+
+#btnNext, #btnPrev
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: gainsboro;
+    border-radius: 50%;
+    top: 35%;
+}
+
+#btnNext:hover, #btnPrev:hover
+{
+    cursor: pointer;
+}
+
+#btnPrev
+{
+    left: 50px;
+}
+
+#btnNext
+{
+    right: 50px;
+}
+
+.b-show {
+    animation: showBlock 1s linear forwards;
+}
+
+@keyframes showBlock {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}

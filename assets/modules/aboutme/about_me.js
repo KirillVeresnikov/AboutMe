@@ -1,2 +1,2 @@
 require('./about_me.scss');
-require('../base/components/note/note.js');
+require('./components/note/note.js');

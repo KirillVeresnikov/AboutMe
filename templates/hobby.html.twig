@@ -1,0 +1,39 @@
+{# templates/hobby.html.twig #}
+
+{% extends "base.html.twig" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/hobby.css') }}">
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block header %}
+    <h1>{{ pageTitle }}</h1>
+{% endblock %}
+
+{% block article %}
+    <div class="slider">
+        <div class="slider__elements">
+            {% for photo in photos %}
+                <div class="slider-item" id="item-{{ loop.index }}">
+                    <img src="{{ photo }}" alt="Image" class="slide-img">
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="slider-button">
+            <div id="btnNext"></div>
+            <div id="btnPrev"></div>
+        </div>
+    </div>
+    <div class="content__item">
+        <div class="item__data">
+            <p class="data__text">{{ text }}</p>
+            <a href="/hobbies">Назад</a>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ asset('build/hobby.js') }}"></script>
+
+{% endblock %}

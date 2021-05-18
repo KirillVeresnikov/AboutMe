@@ -3,7 +3,7 @@ namespace App\View;
 
 use App\Modules\Hobby\HobbyService;
 
-class HobbieView
+class HobbyView
 {
     public static function getView(HobbyService $service, int $id)
     {
@@ -11,11 +11,11 @@ class HobbieView
         if ($hobby !== null)
         {
             return [
-                'template' => 'hobbie.html.twig',
+                'template' => 'hobby.html.twig',
                 'options' => [
-                    'caption' => $hobby->getTitle(),
+                    'pageTitle' => $hobby->getTitle(),
                     'photos' => $hobby->getImages(),
-                    'text' => $hobby->getText()
+                    'text' => $hobby->getText(),
                 ]
             ];
         }
@@ -23,7 +23,10 @@ class HobbieView
         {
             return [
                 'template' => '404.html.twig',
-                'options' => [],
+                'options' => [
+                    'pageTitle' => 'Страница не найдена!',
+                    'problems' => 'Мы уже ищем причину почему вы тут оказались :)',
+                ],
             ];
         }
     }

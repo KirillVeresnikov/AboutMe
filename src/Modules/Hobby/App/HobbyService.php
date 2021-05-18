@@ -3,7 +3,7 @@
 namespace App\Modules\Hobby;
 
 use App\Modules\Hobby\Infrastructure\ImageProvider;
-use App\Modules\Hobby\Infrastructure\HobbyRepository;
+use App\Modules\Hobby\Infrastructure\HobbyConfiguration;
 use App\Modules\Hobby\Model\Hobby;
 
 class HobbyService
@@ -15,7 +15,7 @@ class HobbyService
     public function __construct()
     {
         $index = 1;
-        $repository = new HobbyRepository();
+        $repository = new HobbyConfiguration();
         foreach ($repository->getHobbyMap() as $key => $value)
         {
             $this->hobbies[] = new Hobby($index++ ,$key, $value, ImageProvider::getImages(self::QUANTITY_IMAGES, $key));

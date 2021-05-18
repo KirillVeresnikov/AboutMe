@@ -19,6 +19,7 @@ class HobbiesView
         return [
             'template' => 'hobbies.html.twig',
             'options' => [
+                'pageTitle' => 'Мои увлечения',
                 'notes' => $result,
             ]
         ];

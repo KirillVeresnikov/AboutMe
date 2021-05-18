@@ -1,42 +1,38 @@
 {# templates/index.html.twig #}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Сайт про меня</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div class="avatar">
-            <img src="{{ photo }}" alt="Avatar">
+
+{% extends "base.html.twig" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/aboutMe.css') }}">
+{% endblock %}
+
+{% block header %}
+    <div class="avatar">
+        <img src="{{ photo }}" alt="Avatar">
+    </div>
+    <div class="information">
+        <div class="header__title">
+            <h1>{{ first_name }} {{ last_name }}</h1>
         </div>
-        <div class="information">
-            <div class="header__title">
-                <h1>{{ first_name }} {{ last_name }}</h1>
+        <div class="header__birthday">
+            <h2>{{ bdate }}</h2>
+        </div>
+        <div class="header__status">
+            <h2>{{ status }}</h2>
+        </div>
+    </div>
+{% endblock %}
+
+{% block article %}
+    {% for note in notes %}
+        <div class="content__item">
+            <div class="item__data">
+                <h2 class="data__title">{{ note.data.caption }}</h2>
+                <p class="data__text">{{ note.data.text }}</p>
             </div>
-            <div class="header__birthday">
-                <h2>{{ bdate }}</h2>
-            </div>
-            <div class="header__status">
-                <h2>{{ status }}</h2>
+            <div class="item__img">
+                <img src="images/{{ note.data.photo }}" alt="Картинка">
             </div>
         </div>
-    </header>
-    <div class="delimiter" />   
-    <article>
-        {% for note in notes %}
-            <div class="content__item">
-                <div class="item__data">
-                    <h2 class="data__title">{{ note.data.caption }}</h2>
-                    <p class="data__text">{{ note.data.text }}</p>
-                </div>
-                <div class="item__img">
-                    <img src="images/{{ note.data.photo }}" alt="Картинка">
-                </div>
-            </div>
-        {% endfor %}
-    </article>
-</body>
+    {% endfor %}
+{% endblock %}

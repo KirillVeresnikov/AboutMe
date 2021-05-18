@@ -2,7 +2,7 @@
 
 namespace App\Modules\AboutMe\Model;
 
-class VKUser
+class User
 {
     private string $firstName;
     private string $lastName;

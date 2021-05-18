@@ -17,3 +17,11 @@ header
   background-color:#2787F5;
   color:lightyellow;
 }
+
+article .content
+{
+    font-family: $fontStack;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

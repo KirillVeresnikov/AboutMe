@@ -3,7 +3,7 @@
 namespace App\Modules\AboutMe\Infrastructure;
 
 use App\Modules\AboutMe\App\VKDataProviderInterface;
-use App\Modules\AboutMe\Model\VKUser;
+use App\Modules\AboutMe\Model\User;
 use VK\Client\VKApiClient;
 
 class VKDataProvider implements VKDataProviderInterface
@@ -17,7 +17,7 @@ class VKDataProvider implements VKDataProviderInterface
         $this->client = new VKApiClient();
     }
 
-    public function getUser(string $id): ?VKUser
+    public function getUser(string $id): ?User
     {
         $response = $this->client->users()->get($this->key, [
             'user_ids' => [$id],
@@ -32,7 +32,7 @@ class VKDataProvider implements VKDataProviderInterface
             $photo = $response[0]['photo_max'];
             $status = $response[0]['status'];
 
-            return new VKUser($firstName, $lastName, $birthDate, $photo, $status);
+            return new User($firstName, $lastName, $birthDate, $photo, $status);
         }
         else
         {

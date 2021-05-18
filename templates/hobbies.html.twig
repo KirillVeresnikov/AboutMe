@@ -1,30 +1,26 @@
 {# templates/hobbies.html.twig #}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Сайт про меня</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <h1>Увлечения</h1>
-    </header>
-    <div class="delimiter" />   
-    <article>
-        {% for note in notes %}
-            <div class="content__item">
-                <div class="item__data">
-                    <h2 class="data__title">{{ note.array.data.caption }}</h2>
-                    <p class="data__text">{{ note.array.data.text }}</p>
-                    <a class="more" href="{{ note.url }}">Читать далее</a>
-                </div>
-                <div class="item__img">
-                    <img src="{{ note.array.data.images[0] }}" alt="Картинка">
-                </div>
+
+{% extends "base.html.twig" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/hobbies.css') }}">
+{% endblock %}
+
+{% block header %}
+    <h1>{{ pageTitle }}</h1>
+{% endblock %}
+
+{% block article %}
+    {% for note in notes %}
+        <div class="content__item">
+            <div class="item__data">
+                <h2 class="data__title">{{ note.array.data.caption }}</h2>
+                <p class="data__text">{{ note.array.data.text }}</p>
+                <a class="more" href="{{ note.url }}">Читать далее</a>
             </div>
-        {% endfor %}
-    </article>
-</body>
+            <div class="item__img">
+                <img src="{{ note.array.data.images[0] }}" alt="Картинка">
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %} 

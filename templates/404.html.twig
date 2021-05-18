@@ -1,19 +1,17 @@
 {# templates/404.html.twig #}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Сайт про меня</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <h1>Страница не найдена</h1>
-    </header>
-    <div class="delimiter" />   
-    <article>
-        <a href="#" onclick="history.back();return false;">Вернуться назад</a>
-    </article>
-</body>
+
+{% extends 'base.html.twig' %}
+
+{% block header %}
+  <h1>{{ pageTitle }}</h1>
+{% endblock %}
+
+{% block article %}
+  <div class="content">
+    <div class="error">
+      <h2>Что-то пошло не так...</h2>
+      <h3>{{ problems }}</h3>
+      <a href="#" onclick="history.back(); return false;">Вернуться назад</a>  
+    </div>
+  </div>
+{% endblock %}

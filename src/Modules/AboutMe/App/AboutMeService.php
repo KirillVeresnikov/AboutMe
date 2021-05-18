@@ -4,7 +4,7 @@ namespace App\Modules\AboutMe;
 
 use App\Modules\AboutMe\Infrastructure\NotesRepository;
 use App\Modules\AboutMe\Infrastructure\VKDataProvider;
-use App\Modules\AboutMe\Model\VKUser;
+use App\Modules\AboutMe\Model\User;
 
 class AboutMeService
 {
@@ -17,7 +17,7 @@ class AboutMeService
         $this->notes = new NotesRepository();
     }
 
-    public function getUser(string $id): ?VKUser
+    public function getUser(string $id): ?User
     {
         return $this->vkData->getUser($id);
     }
