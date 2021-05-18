@@ -18,7 +18,11 @@ class HobbyService
         $repository = new HobbyConfiguration();
         foreach ($repository->getHobbyMap() as $key => $value)
         {
-            $this->hobbies[] = new Hobby($index++ ,$key, $value, ImageProvider::getImages(self::QUANTITY_IMAGES, $key));
+            $images = ImageProvider::getImages(self::QUANTITY_IMAGES, $key);
+            if ($images !== null)
+            {
+                $this->hobbies[] = new Hobby($index++ ,$key, $value, $images);
+            }
         }
     }
 
