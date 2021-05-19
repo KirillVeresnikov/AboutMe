@@ -2,6 +2,7 @@ require("./slider.scss");
 
 const countItems = document.getElementsByClassName('slider-item').length; 
 let sliderItems = [];
+let activeItem = sliderItems[0];
 const timeSlide = 10000;
 
 window.onload = () => {
@@ -16,11 +17,11 @@ function initSlider() {
              sliderItems[index - 1].style.display = 'none';
         }
     }
+    document.getElementById('btnNext').addEventListener('click', () => {hide(activeItem); setTimeout(nextSlide, 1000);});
+    document.getElementById('btnPrev').addEventListener('click', () => {hide(activeItem); setTimeout(prevSlide, 1000);});
 
     setInterval(nextSlide, timeSlide);
-
-    document.getElementById('btnNext').addEventListener('click', () => {nextSlide();});
-    document.getElementById('btnPrev').addEventListener('click', () => {prevSlide();});
+    setTimeout(hide, timeSlide - 1000, activeItem);
 
 }
 
@@ -36,6 +37,7 @@ function nextSlide() {
         sliderItems[index - 1].style.order = currentOrderNum;
 
         if (currentOrderNum === 1) {
+            activeItem = sliderItems[index - 1];
             sliderItems[index - 1].style.display = 'block';
             show(sliderItems[index - 1]);
             setTimeout(hide, timeSlide - 1000, sliderItems[index - 1]);
@@ -59,11 +61,14 @@ function prevSlide() {
         sliderItems[index - 1].style.order = currentOrderNum;
 
         if (currentOrderNum === 1) {
+            activeItem = sliderItems[index - 1];
             sliderItems[index - 1].style.display = 'block';
             show(sliderItems[index - 1]);
+            setTimeout(hide, timeSlide - 1000, sliderItems[index - 1]);
         } else {
             sliderItems[index - 1].style.display = 'none';
             sliderItems[index - 1].classList.remove('b-show');
+            sliderItems[index - 1].classList.remove('b-hide');
         }
     }
 }
