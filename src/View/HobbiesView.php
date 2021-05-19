@@ -18,7 +18,7 @@ class HobbiesView
                         'images' => $hobby['images'],
                     ],
                 ],
-                'url' => '/hobbie/'.$hobby['hobby']->getId(),
+                'url' => '/hobby/'.$hobby['hobby']->getId(),
             ];
         }
         

@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\View\HobbyView;
 use App\Modules\Hobby\App\HobbyService;
 
-class HobbieController extends AbstractController
+class HobbyController extends AbstractController
 {
     public function index(int $id, HobbyService $service): Response
     {

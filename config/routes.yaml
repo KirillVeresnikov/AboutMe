@@ -7,5 +7,5 @@ hobbies:
     controller: App\Controller\HobbiesController::index
 
 hobbie:
-    path: /hobbie/{id}
-    controller: App\Controller\HobbieController::index
+    path: /hobby/{id}
+    controller: App\Controller\HobbyController::index
