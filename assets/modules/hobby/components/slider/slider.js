@@ -2,7 +2,6 @@ require("./slider.scss");
 
 const countItems = document.getElementsByClassName('slider-item').length; 
 let sliderItems = [];
-let activeItem = sliderItems[0];
 const timeSlide = 10000;
 
 window.onload = () => {
@@ -17,12 +16,9 @@ function initSlider() {
              sliderItems[index - 1].style.display = 'none';
         }
     }
-    document.getElementById('btnNext').addEventListener('click', () => {hide(activeItem); setTimeout(nextSlide, 1000);});
-    document.getElementById('btnPrev').addEventListener('click', () => {hide(activeItem); setTimeout(prevSlide, 1000);});
 
+    setTimeout(hide, timeSlide - 1000, sliderItems[0]);
     setInterval(nextSlide, timeSlide);
-    setTimeout(hide, timeSlide - 1000, activeItem);
-
 }
 
 function nextSlide() {
