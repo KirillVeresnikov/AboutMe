@@ -19,11 +19,15 @@ class VKDataProvider implements VKDataProviderInterface
 
     public function getUser(string $id): ?User
     {
+        if (strlen($id) < 1) {
+            return null;
+        }
+
         $response = $this->client->users()->get($this->key, [
             'user_ids' => [$id],
             'fields'=> ['photo_max', 'status', 'bdate']
         ]);
-
+        
         if (count($response) > 0)
         {
             $firstName = $response[0]['first_name'];
