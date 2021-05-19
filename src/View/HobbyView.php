@@ -13,9 +13,9 @@ class HobbyView
             return [
                 'template' => 'hobby.html.twig',
                 'options' => [
-                    'pageTitle' => $hobby->getTitle(),
-                    'photos' => $hobby->getImages(),
-                    'text' => $hobby->getText(),
+                    'pageTitle' => $hobby['hobby']->getTitle(),
+                    'photos' => $hobby['images'],
+                    'text' => $hobby['hobby']->getText(),
                 ]
             ];
         }

@@ -1,6 +1,5 @@
 doctrine:
     dbal:
-        override_url: true
         url: '%env(resolve:DATABASE_URL)%'
 
         # IMPORTANT: You MUST configure your server version,
@@ -11,9 +10,9 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            App:
+            App\Modules\Hobby:
                 is_bundle: false
-                type: annotation
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+                type: xml
+                dir: '%kernel.project_dir%/config/doctrine/hobby'
+                prefix: 'App\Modules\Hobby'
+                alias: Hobby

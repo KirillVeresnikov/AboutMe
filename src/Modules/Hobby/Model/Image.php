@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Modules\Hobby\Model;
 
-class Hobby
+class Image
 {
     private int $id;
     private string $title;
-    private string $text;
+    private string $url;
 
-    public function __construct(string $title, string $text)
+    public function __construct(string $title, string $url)
     {
         $this->title = $title;
-        $this->text = $text;
+        $this->url = $url;
     }
 
     public function getId(): int
@@ -26,8 +26,8 @@ class Hobby
         return $this->title;
     }
 
-    public function getText(): string
+    public function getUrl(): string
     {
-        return $this->text;
+        return $this->url;
     }
 }

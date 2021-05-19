@@ -7,7 +7,7 @@ use IvanUskov\ImageSpider\ImageSpider;
 
 class ImageProvider implements ImageProviderInterface
 {
-    public static function getImages(int $count, string $theme): ?array
+    public function getImages(int $count, string $theme): ?array
     {
         $urls = ImageSpider::find($theme);
         if (count($urls) >= $count)
@@ -20,7 +20,6 @@ class ImageProvider implements ImageProviderInterface
 
             return $result;
         }
-        
         return null;
     }
 }

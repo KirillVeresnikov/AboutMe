@@ -8,11 +8,17 @@ class HobbiesView
     public static function getView(HobbyService $service): array
     {
         $result = [];
-        foreach ($service->getHobbies() as $hobby) 
+        foreach ($service->getHobbies()['hobbies'] as $hobby) 
         {
             $result[] = [
-                'array' => $hobby->getArray(),
-                'url' => '/hobbie/'.$hobby->getArray()['id'],
+                'array' => [
+                    'data' => [
+                        'caption' => $hobby['hobby']->getTitle(),
+                        'text' => $hobby['hobby']->getText(),
+                        'images' => $hobby['images'],
+                    ],
+                ],
+                'url' => '/hobbie/'.$hobby['hobby']->getId(),
             ];
         }
         
