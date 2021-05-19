@@ -4,13 +4,12 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\View\HobbiesView;
-use App\Modules\Hobby\HobbyService;
+use App\Modules\Hobby\App\HobbyService;
 
 class HobbiesController extends AbstractController
 {
-    public function index(): Response
+    public function index(HobbyService $service): Response
     {   
-        $service = new HobbyService();
         $view = HobbiesView::getView($service);
 
         return $this->render($view['template'], $view['options']);

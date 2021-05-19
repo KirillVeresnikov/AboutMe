@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Modules\AboutMe;
+namespace App\Modules\AboutMe\App;
 
-use App\Modules\AboutMe\Infrastructure\NotesRepository;
-use App\Modules\AboutMe\Infrastructure\VKDataProvider;
+use App\Modules\AboutMe\App\NotesRepositoryInterface;
+use App\Modules\AboutMe\App\VKDataProviderInterface;
 use App\Modules\AboutMe\Model\User;
 
 class AboutMeService
 {
-    private VKDataProvider $vkData;
-    private NotesRepository $notes;
+    private VKDataProviderInterface $vkData;
+    private NotesRepositoryInterface $notes;
 
-    public function __construct()
+    public function __construct(VKDataProviderInterface $vk, NotesRepositoryInterface $notes)
     {
-        $this->vkData = new VKDataProvider();
-        $this->notes = new NotesRepository();
+        $this->vkData = $vk;
+        $this->notes = $notes;
     }
 
     public function getUser(string $id): ?User

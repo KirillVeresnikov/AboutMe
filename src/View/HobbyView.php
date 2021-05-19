@@ -1,7 +1,7 @@
 <?php
 namespace App\View;
 
-use App\Modules\Hobby\HobbyService;
+use App\Modules\Hobby\App\HobbyService;
 
 class HobbyView
 {

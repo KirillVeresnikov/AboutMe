@@ -4,13 +4,12 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\View\AboutMeView;
-use App\Modules\AboutMe\AboutMeService;
+use App\Modules\AboutMe\App\AboutMeService;
 
 class AboutMeController extends AbstractController
 {
-    public function index(): Response
+    public function index(AboutMeService $service): Response
     {
-        $service = new AboutMeService();
         $view = AboutMeView::getView($service);
          
         return $this->render($view['template'], $view['options']);

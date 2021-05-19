@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Modules\Hobby;
+namespace App\Modules\Hobby\App;
 
-use App\Modules\Hobby\Infrastructure\ImageProvider;
-use App\Modules\Hobby\Infrastructure\HobbyConfiguration;
+use App\Modules\Hobby\App\HobbyConfigurationInterface;
+use App\Modules\Hobby\App\ImageProviderInterface;
 use App\Modules\Hobby\Model\Hobby;
 
 class HobbyService
 {
     const QUANTITY_IMAGES = 5;
     private array $hobbies = [];
-    private int $index;
+    private ImageProviderInterface $imageProvider;
 
-    public function __construct()
+    public function __construct(HobbyConfigurationInterface $configuration, ImageProviderInterface $imageProvider)
     {
+        $this->imageProvider = $imageProvider;
         $index = 1;
-        $repository = new HobbyConfiguration();
-        foreach ($repository->getHobbyMap() as $key => $value)
+        foreach ($configuration->getHobbyMap() as $key => $value)
         {
-            $images = ImageProvider::getImages(self::QUANTITY_IMAGES, $key);
+            $images = $this->imageProvider::getImages(self::QUANTITY_IMAGES, $key);
             if ($images !== null)
             {
-                $this->hobbies[] = new Hobby($index++ ,$key, $value, $images);
+                $this->addHobby($index++, $key, $value);
             }
         }
     }
@@ -45,6 +45,6 @@ class HobbyService
 
     public function addHobby(int $id, string $title, string $text): void
     {
-        $this->hobbies[] = new Hobby($id ,$title, $text, $imageProvider->getImages(self::QUANTITY_IMAGES, $key));
+        $this->hobbies[] = new Hobby($id ,$title, $text, $this->imageProvider::getImages(self::QUANTITY_IMAGES, $title));
     }
 }
