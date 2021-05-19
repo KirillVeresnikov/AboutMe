@@ -55,3 +55,16 @@
       opacity: 1;
     }
 }
+
+.b-hide {
+    animation: hideBlock 1s linear forwards;
+}
+
+@keyframes hideBlock {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}

@@ -38,9 +38,11 @@ function nextSlide() {
         if (currentOrderNum === 1) {
             sliderItems[index - 1].style.display = 'block';
             show(sliderItems[index - 1]);
+            setTimeout(hide, timeSlide - 1000, sliderItems[index - 1]);
         } else {
             sliderItems[index - 1].style.display = 'none';
             sliderItems[index - 1].classList.remove('b-show');
+            sliderItems[index - 1].classList.remove('b-hide');
         }
     }
 }
@@ -68,5 +70,9 @@ function prevSlide() {
 
 function show(item) {
     item.classList.add('b-show');
+}
+
+function hide(item) {
+    item.classList.add('b-hide');
 }
 
