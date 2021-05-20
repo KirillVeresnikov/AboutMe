@@ -11,6 +11,7 @@ use App\Modules\Hobby\Model\Image;
 class HobbyService
 {
     const QUANTITY_IMAGES = 5;
+
     private HobbyRepositoryInterface $hobbyRepository;
     private ImageRepositoryInterface $imageRepository;
 
@@ -22,7 +23,7 @@ class HobbyService
         $this->imageRepository = $imageRepository;
         $this->imageProvider = $imageProvider;
 
-        //$this->initRepo(); если БД пустая, раскоментировать
+        $this->initRepo(); //если БД пустая, раскоментировать
     }
 
     private function initRepo(): void
@@ -100,7 +101,8 @@ class HobbyService
     public function addHobby(string $title, string $text): void
     {
         $hobby = new Hobby($title, $text);
-        if ($this->hobbyRepository->getHobbyByTitle($title) === null) {
+        if ($this->hobbyRepository->getHobbyByTitle($title) === null)
+        {
             $this->hobbyRepository->addHobby($hobby);
         }
         

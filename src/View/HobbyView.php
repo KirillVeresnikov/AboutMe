@@ -1,4 +1,5 @@
 <?php
+
 namespace App\View;
 
 use App\Modules\Hobby\App\HobbyService;
@@ -13,6 +14,7 @@ class HobbyView
             return [
                 'template' => 'hobby.html.twig',
                 'options' => [
+                    'id' => $hobby['hobby']->getId(),
                     'pageTitle' => $hobby['hobby']->getTitle(),
                     'photos' => $hobby['images'],
                     'text' => $hobby['hobby']->getText(),

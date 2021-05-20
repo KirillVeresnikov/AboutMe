@@ -19,7 +19,8 @@ class VKDataProvider implements VKDataProviderInterface
 
     public function getUser(string $id): ?User
     {
-        if (strlen($id) < 1) {
+        if (strlen($id) < 1)
+        {
             return null;
         }
 

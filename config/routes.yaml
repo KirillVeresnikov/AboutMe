@@ -1,11 +1,24 @@
 index:
     path: /
     controller: App\Controller\AboutMeController::index
+    methods: GET
 
 hobbies:
     path: /hobbies
     controller: App\Controller\HobbiesController::index
+    methods: GET
 
-hobbie:
+hobbies_update:
+    path: /hobbies/update
+    controller: App\Controller\HobbiesController::update
+    methods: POST
+
+hobby:
     path: /hobby/{id}
     controller: App\Controller\HobbyController::index
+    methods: GET
+
+hobby_update:
+    path: /hobby/update
+    controller: App\Controller\HobbyController::update
+    methods: POST

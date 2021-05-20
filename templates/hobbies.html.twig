@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block header %}
-    <h1>{{ pageTitle }}</h1>
+    <h1>{{ pageTitle }}</h1><a id="update" href='#'>Обновить фотографии у всех увлечений</a>
 {% endblock %}
 
 {% block article %}
@@ -23,4 +23,6 @@
             </div>
         </div>
     {% endfor %}
+    <script type="text/javascript" src="{{ asset('build/hobbies.js') }}"></script>
+
 {% endblock %} 

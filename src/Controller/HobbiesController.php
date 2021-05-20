@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -13,5 +14,15 @@ class HobbiesController extends AbstractController
         $view = HobbiesView::getView($service);
 
         return $this->render($view['template'], $view['options']);
+    }
+
+    public function update(HobbyService $service): Response
+    {
+        foreach ($service->getHobbies()['hobbies'] as $value)
+        {
+            $service->updateImage($value['hobby']->getTitle());
+        }
+        
+        return new Response('OK');
     }
 }
