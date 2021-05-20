@@ -1,79 +1,88 @@
 require("./slider.scss");
 
-const countItems = document.getElementsByClassName('slider-item').length; 
-let sliderItems = [];
-const timeSlide = 10000;
+export default class Slider {
+    constructor(id) {
+        this.id = id;
+        this.Slider = document.getElementById(this.id);
+        this.countItems = this.Slider.getElementsByClassName("slider-item").length;
+        this.sliderItems = [];
+        this.timeSlide = 10000;
 
-window.onload = () => {
-    initSlider();
-};
+        this.initSlider();
+    }
 
-function initSlider() {
-    for (let index = 1; index <= countItems; index++) {
-        sliderItems.push(document.getElementById("item-" + index));
-        sliderItems[index - 1].style.order = index;
-        if (index > 1) {
-             sliderItems[index - 1].style.display = 'none';
+    initSlider() {
+        for (let index = 1; index <= this.countItems; index++) {
+            this.sliderItems.push(this.Slider.getElementsByClassName('item-' + index)[0]);
+            this.sliderItems[index - 1].style.order = index;
+            if (index > 1) {
+                this.sliderItems[index - 1].style.display = "none";
+            }
+        }
+
+        setTimeout(this.hide, this.timeSlide - 1000, this.sliderItems[0]);
+        setInterval(this.nextSlide, this.timeSlide, this);
+    }
+
+    nextSlide(context) {
+        for (let index = 1; index <= context.countItems; index++) {
+            let currentOrderStyle = context.sliderItems[index - 1].style.order;
+            var currentOrderNum =
+                Number(currentOrderStyle[currentOrderStyle.length - 1]) + 1;
+
+            if (currentOrderNum > context.countItems) {
+                currentOrderNum = 1;
+            }
+
+            context.sliderItems[index - 1].style.order = currentOrderNum;
+
+            if (currentOrderNum === 1) {
+                context.sliderItems[index - 1].style.display = "block";
+                context.show(context.sliderItems[index - 1]);
+                setTimeout(
+                    context.hide,
+                    context.timeSlide - 1000,
+                    context.sliderItems[index - 1]
+                );
+            } else {
+                context.sliderItems[index - 1].style.display = "none";
+                context.sliderItems[index - 1].classList.remove("b-show");
+                context.sliderItems[index - 1].classList.remove("b-hide");
+            }
         }
     }
 
-    setTimeout(hide, timeSlide - 1000, sliderItems[0]);
-    setInterval(nextSlide, timeSlide);
-}
+    prevSlide(context) {
+        for (let index = context.countItems; index >= 1; index--) {
+            let currentOrderStyle = context.sliderItems[index - 1].style.order;
+            var currentOrderNum =
+                Number(currentOrderStyle[currentOrderStyle.length - 1]) - 1;
 
-function nextSlide() {
-    for (let index = 1; index <= countItems; index++) {
-        let currentOrderStyle = sliderItems[index - 1].style.order;
-        var currentOrderNum = Number(currentOrderStyle[currentOrderStyle.length - 1]) + 1;
+            if (currentOrderNum < 1) {
+                currentOrderNum = context.countItems;
+            }
 
-        if (currentOrderNum > countItems) {
-            currentOrderNum = 1;
+            context.sliderItems[index - 1].style.order = currentOrderNum;
+
+            if (currentOrderNum === 1) {
+                context.sliderItems[index - 1].style.display = "block";
+                context.show(context.sliderItems[index - 1]);
+                setTimeout(context.hide, timeSlide - 1000, context.sliderItems[index - 1]);
+            } else {
+                context.sliderItems[index - 1].style.display = "none";
+                context.sliderItems[index - 1].classList.remove("b-show");
+                context.sliderItems[index - 1].classList.remove("b-hide");
+            }
         }
+    }
 
-        sliderItems[index - 1].style.order = currentOrderNum;
+    show(item) {
+        item.classList.add("b-show");
+    }
 
-        if (currentOrderNum === 1) {
-            activeItem = sliderItems[index - 1];
-            sliderItems[index - 1].style.display = 'block';
-            show(sliderItems[index - 1]);
-            setTimeout(hide, timeSlide - 1000, sliderItems[index - 1]);
-        } else {
-            sliderItems[index - 1].style.display = 'none';
-            sliderItems[index - 1].classList.remove('b-show');
-            sliderItems[index - 1].classList.remove('b-hide');
-        }
+    hide(item) {
+        item.classList.add("b-hide");
     }
 }
 
-function prevSlide() {
-    for (let index = countItems; index >= 1; index--) {
-        let currentOrderStyle = sliderItems[index - 1].style.order;
-        var currentOrderNum = Number(currentOrderStyle[currentOrderStyle.length - 1]) - 1;
-
-        if (currentOrderNum < 1) {
-            currentOrderNum = countItems;
-        }
-
-        sliderItems[index - 1].style.order = currentOrderNum;
-
-        if (currentOrderNum === 1) {
-            activeItem = sliderItems[index - 1];
-            sliderItems[index - 1].style.display = 'block';
-            show(sliderItems[index - 1]);
-            setTimeout(hide, timeSlide - 1000, sliderItems[index - 1]);
-        } else {
-            sliderItems[index - 1].style.display = 'none';
-            sliderItems[index - 1].classList.remove('b-show');
-            sliderItems[index - 1].classList.remove('b-hide');
-        }
-    }
-}
-
-function show(item) {
-    item.classList.add('b-show');
-}
-
-function hide(item) {
-    item.classList.add('b-hide');
-}
-
+const slider = new Slider("slider");
