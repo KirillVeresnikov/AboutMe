@@ -20,7 +20,10 @@ class HobbiesController extends AbstractController
     {
         foreach ($service->getHobbies()['hobbies'] as $value)
         {
-            $service->updateImage($value['hobby']->getTitle());
+            if ($service->updateImage($value['hobby']->getTitle()) === null)
+            {
+                return new Response(500);
+            }
         }
         
         return new Response('OK');

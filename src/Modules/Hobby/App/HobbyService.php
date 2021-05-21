@@ -23,7 +23,7 @@ class HobbyService
         $this->imageRepository = $imageRepository;
         $this->imageProvider = $imageProvider;
 
-        $this->initRepo(); //если БД пустая, раскоментировать
+        //$this->initRepo(); //если БД пустая, раскоментировать
     }
 
     private function initRepo(): void
@@ -115,7 +115,7 @@ class HobbyService
         }
     }
 
-    public function updateImage(string $title): void
+    public function updateImage(string $title): ?void
     {
         $images = [];
         $urls = $this->imageProvider->getImages(self::QUANTITY_IMAGES, $title);
@@ -126,6 +126,10 @@ class HobbyService
                 $images[] = new Image($title, $value);
             }
             $this->imageRepository->updateImageByTitle($title, $images);
+       } 
+       else
+       {
+           return null;
        }
     }
 }

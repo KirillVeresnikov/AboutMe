@@ -21,11 +21,16 @@ class HobbyController extends AbstractController
     {
         $id = (int) $request->request->getDigits('id');
         $hobby = $service->getHobbyById($id);
-        if ($hobby === null) {
-            return new Response(500);
+
+        if ($hobby === null)
+        {
+            return new Response(404);
         }
         
-        $service->updateImage($hobby['hobby']->getTitle());
+        if ($service->updateImage($hobby['hobby']->getTitle() === null))
+        {
+            return new Response(500);
+        }
 
         return new Response('OK');
     }
