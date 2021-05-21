@@ -115,7 +115,7 @@ class HobbyService
         }
     }
 
-    public function updateImage(string $title): ?void
+    public function updateImage(string $title): ?bool
     {
         $images = [];
         $urls = $this->imageProvider->getImages(self::QUANTITY_IMAGES, $title);
@@ -126,6 +126,8 @@ class HobbyService
                 $images[] = new Image($title, $value);
             }
             $this->imageRepository->updateImageByTitle($title, $images);
+
+            return true;
        } 
        else
        {
