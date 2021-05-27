@@ -40,9 +40,9 @@ class ImageRepository implements ImageRepositoryInterface
         {
             foreach ($images as $image)
             {
-                $this->manager->remove($image);
-                $this->manager->flush();            
+                $this->manager->remove($image);           
             }
+            $this->manager->flush(); 
         }
     }
 
