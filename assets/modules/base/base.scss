@@ -2,20 +2,20 @@ $fontStack: 'Source Sans Pro', sans-serif;
   
 body
 {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: $fontStack;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $fontStack;
 }
 
 header
 {
-  display: flex;
-  justify-content: center;
-  background-color:#2787F5;
-  color:lightyellow;
+    display: flex;
+    justify-content: center;
+    background-color:#2787F5;
+    color:lightyellow;
 }
 
 article .content
