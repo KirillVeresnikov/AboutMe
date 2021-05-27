@@ -18,11 +18,13 @@
     object-fit: cover;
 }
 
-.b-show {
+.b-show
+{
     animation: showBlock 1s linear forwards;
 }
 
-@keyframes showBlock {
+@keyframes showBlock
+{
     0% {
       opacity: 0;
     }
@@ -31,11 +33,13 @@
     }
 }
 
-.b-hide {
+.b-hide
+{
     animation: hideBlock 1s linear forwards;
 }
 
-@keyframes hideBlock {
+@keyframes hideBlock
+{
     0% {
       opacity: 1;
     }
