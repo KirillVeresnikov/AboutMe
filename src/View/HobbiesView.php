@@ -2,24 +2,24 @@
 
 namespace App\View;
 
-use App\Modules\Hobby\App\HobbyService;
+use App\Modules\Hobby\Model\DetailedHobby;
 
 class HobbiesView
 {
-    public static function getView(HobbyService $service): array
+    public static function getView(array $hobbies): array
     {
         $result = [];
-        foreach ($service->getHobbies()['hobbies'] as $hobby) 
+        foreach ($hobbies as $hobby) 
         {
             $result[] = [
                 'array' => [
                     'data' => [
-                        'caption' => $hobby['hobby']->getTitle(),
-                        'text' => $hobby['hobby']->getText(),
-                        'images' => $hobby['images'],
+                        'caption' => $hobby->getTitle(),
+                        'text' => $hobby->getText(),
+                        'image' => $hobby->getImage()->getUrl(),
                     ],
                 ],
-                'url' => '/hobby/'.$hobby['hobby']->getId(),
+                'url' => '/hobby/'.$hobby->getId(),
             ];
         }
         

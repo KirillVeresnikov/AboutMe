@@ -36,7 +36,8 @@ class ImageRepository implements ImageRepositoryInterface
     public function deleteImageByTitle(string $title): void
     {
         $images = $this->getImagesByTitle($title);
-        if ($images !== null) {
+        if ($images !== null)
+        {
             foreach ($images as $image)
             {
                 $this->manager->remove($image);

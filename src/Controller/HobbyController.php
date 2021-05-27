@@ -12,7 +12,7 @@ class HobbyController extends AbstractController
 {
     public function index(int $id, HobbyService $service): Response
     {
-        $view = HobbyView::getView($service, $id);
+        $view = HobbyView::getView($service->getHobbyById($id));
 
         return $this->render($view['template'], $view['options']);
     }
@@ -27,9 +27,9 @@ class HobbyController extends AbstractController
             return new Response(404);
         }
         
-        if ($service->updateImage($hobby['hobby']->getTitle() === null))
+        if ($service->updateImage($hobby->getTitle() === null))
         {
-            return new Response(500);
+            return new Response(400);
         }
 
         return new Response('OK');

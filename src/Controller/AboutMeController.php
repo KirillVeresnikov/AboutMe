@@ -11,7 +11,7 @@ class AboutMeController extends AbstractController
 {
     public function index(AboutMeService $service): Response
     {
-        $view = AboutMeView::getView($service);
+        $view = AboutMeView::getView($service->getUser($_ENV['vkId']), $service->getNotes());
          
         return $this->render($view['template'], $view['options']);
     }

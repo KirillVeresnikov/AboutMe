@@ -20,6 +20,7 @@ class ImageProvider implements ImageProviderInterface
 
             return $result;
         }
+        
         return null;
     }
 }

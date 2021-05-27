@@ -2,13 +2,12 @@
 
 namespace App\View;
 
-use App\Modules\AboutMe\App\AboutMeService;
+use App\Modules\AboutMe\Model\User;
 
 class AboutMeView
 {
-    public static function getView(AboutMeService $service): array
+    public static function getView(User $user, array $notes): array
     {
-        $user = $service->getUser($_ENV['vkId']);
         if($user === null)
         {
             return [
@@ -29,8 +28,8 @@ class AboutMeView
                 'bdate' => $user->getBirthDate(),
                 'photo' => $user->getPhoto(),
                 'status' => $user->getStatus(),
-                'notes' => $service->getNotes(),
-            ]
+                'notes' => $notes,
+            ],
         ];
     }
 }

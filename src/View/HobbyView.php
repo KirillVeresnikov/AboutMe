@@ -2,22 +2,26 @@
 
 namespace App\View;
 
-use App\Modules\Hobby\App\HobbyService;
+use App\Modules\Hobby\Model\DetailedHobby;
 
 class HobbyView
 {
-    public static function getView(HobbyService $service, int $id): array
+    public static function getView(DetailedHobby $hobby): array
     {
-        $hobby = $service->getHobbyById($id);
         if ($hobby !== null)
         {
+            $images = [];
+            foreach ($hobby->getImages() as $image) {
+                $images[] = $image->getUrl();
+            }
+
             return [
                 'template' => 'hobby.html.twig',
                 'options' => [
-                    'id' => $hobby['hobby']->getId(),
-                    'pageTitle' => $hobby['hobby']->getTitle(),
-                    'photos' => $hobby['images'],
-                    'text' => $hobby['hobby']->getText(),
+                    'id' => $hobby->getId(),
+                    'pageTitle' => $hobby->getTitle(),
+                    'photos' => $images,
+                    'text' => $hobby->getText(),
                 ]
             ];
         }

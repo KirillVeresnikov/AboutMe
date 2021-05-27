@@ -11,18 +11,19 @@ class HobbiesController extends AbstractController
 {
     public function index(HobbyService $service): Response
     {   
-        $view = HobbiesView::getView($service);
+
+        $view = HobbiesView::getView($service->getHobbies());
 
         return $this->render($view['template'], $view['options']);
     }
 
     public function update(HobbyService $service): Response
     {
-        foreach ($service->getHobbies()['hobbies'] as $value)
+        foreach ($service->getHobbies() as $hobby)
         {
-            if ($service->updateImage($value['hobby']->getTitle()) === null)
+            if ($service->updateImage($hobby->getTitle()) === null)
             {
-                return new Response(500);
+                return new Response(400);
             }
         }
         
