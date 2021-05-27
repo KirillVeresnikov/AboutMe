@@ -7,8 +7,6 @@ export default class Slider {
         this.countItems = this.Slider.getElementsByClassName("slider-item").length;
         this.sliderItems = [];
         this.timeSlide = 10000;
-
-        this.initSlider();
     }
 
     initSlider() {
@@ -84,5 +82,3 @@ export default class Slider {
         item.classList.add("b-hide");
     }
 }
-
-const slider = new Slider("slider");
