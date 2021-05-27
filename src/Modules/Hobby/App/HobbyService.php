@@ -25,23 +25,6 @@ class HobbyService
         $this->imageProvider = $imageProvider;
     }
 
-    private function addHobby(string $title, string $text): void
-    {
-        $hobby = new Hobby($title, $text);
-        if ($this->hobbyRepository->getHobbyByTitle($title) === null)
-        {
-            $this->hobbyRepository->addHobby($hobby);
-        }
-        
-        $images = $this->imageProvider->getImages(self::QUANTITY_IMAGES, $title);
-        if ($images !== null) {
-            foreach ($images as $url)
-            {
-                $this->imageRepository->addImage(new Image($title, $url));
-            }
-        }
-    }
-
     public function getHobbies(): ?array
     {
         $hobbies = $this->hobbyRepository->getHobbies();
@@ -99,5 +82,22 @@ class HobbyService
         } 
 
         return null;
+    }
+    
+    private function addHobby(string $title, string $text): void
+    {
+        $hobby = new Hobby($title, $text);
+        if ($this->hobbyRepository->getHobbyByTitle($title) === null)
+        {
+            $this->hobbyRepository->addHobby($hobby);
+        }
+        
+        $images = $this->imageProvider->getImages(self::QUANTITY_IMAGES, $title);
+        if ($images !== null) {
+            foreach ($images as $url)
+            {
+                $this->imageRepository->addImage(new Image($title, $url));
+            }
+        }
     }
 }
